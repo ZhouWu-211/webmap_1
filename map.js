@@ -7,7 +7,7 @@ console.log('Loaded map.js')
 mapboxgl.accessToken = 'pk.eyJ1IjoiemhvdXd1MjExIiwiYSI6ImNrOW5pM2tpaTAyamozbXFyYnc1dDF5NHQifQ.oV4cjeCmEDVA7nXobLvqFA'
 let map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/zhouwu211/ck9nj2qp21rem1jnt4704jp4z',
+    style: 'mapbox://styles/zhouwu211/ck9yqlbag2mz21imtepmup29y',
     center: [35.78220, -18.42038],
     zoom: 4.95
 })
@@ -27,3 +27,26 @@ let scale = new mapboxgl.ScaleControl({
 
 // add the scale to your map
 map.addControl(scale, 'bottom-right')
+
+
+var mining_url = ".data/Mining&Trans_Industry_1.geojson"
+map.on('load',function(){
+    // define a 'source' for your point dataset
+    map.addSource('mining_data',{
+      'type':'geojson',
+      'data': ".data/Mining&Trans_Industry_1.geojson"
+    });
+    // add a new layer with your points
+    map.addLayer({
+      'id':'Industry',
+      'type':'circle',
+      'source':'mining_data',
+      'paint':{
+        'circle-radius':10,
+        'circle-color': '#ffffff',
+        'circle-opacity':0.5
+      },
+    })
+  
+  
+  });
