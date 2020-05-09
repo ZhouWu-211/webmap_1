@@ -30,6 +30,7 @@ map.addControl(scale, 'bottom-right')
 
 
 var mining_url = ".data/Mining&Trans_Industry_1.geojson"
+
 map.on('load',function(){
     // define a 'source' for your point dataset
     map.addSource('mining_data',{
@@ -43,7 +44,7 @@ map.on('load',function(){
       'source':'mining_data',
       'paint':{
         'circle-radius':10,
-        'circle-color': '#ffffff',
+        'circle-color': 'red',
         'circle-opacity':0.5
       },
     })
